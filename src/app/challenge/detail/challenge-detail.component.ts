@@ -1,20 +1,20 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {generateClient} from "aws-amplify/data";
-import {Schema} from "../../../amplify/data/resource";
+import {Schema} from "../../../../amplify/data/resource";
 
 export type LocalDate = string;
 const client = generateClient<Schema>();
 
 @Component({
-  selector: 'app-challenge',
+  selector: 'app-challenge-detail',
   standalone: true,
   imports: [ReactiveFormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './challenge.component.html',
-  styleUrl: './challenge.component.scss'
+  templateUrl: './challenge-detail.component.html',
+  styleUrl: './challenge-detail.component.scss'
 })
-export class ChallengeComponent {
+export class ChallengeDetailComponent {
 
   public challengeForm = new FormGroup({
     name: new FormControl<string>('test', {

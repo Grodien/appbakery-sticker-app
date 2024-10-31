@@ -1,0 +1,25 @@
+<div class="bmi-title-action">
+  <sbb-title level="4">Challenges</sbb-title>
+  <div class="aba-button-actions">
+      <sbb-secondary-button routerLink="/challenges/create" size="s" icon-name="circle-plus-small"
+      >Neue Challenge</sbb-secondary-button
+      >
+  </div>
+</div>
+<sbb-table-wrapper>
+  <table class="sbb-table">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+    </tr>
+    </thead>
+
+    <tbody>
+      @for (challenge of challenges()?.items; track challenge.id) {
+        <tr>
+          <td>{{ challenge.name }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</sbb-table-wrapper>
