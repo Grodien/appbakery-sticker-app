@@ -1,0 +1,26 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.actionContainer {
+  display: flex;
+  gap: 0.5rem;
+  margin-block-end: var(--sbb-spacing-fixed-3x); // sbb-title h4
+}
+
+.cancelActionContainer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

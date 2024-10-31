@@ -1,8 +1,8 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {RouterModule, RouterOutlet} from '@angular/router';
-import { TodosComponent } from './todos/todos.component';
 import { Amplify } from 'aws-amplify';
 import outputs from '../../amplify_outputs.json';
+import packageJson from '../../package.json';
 
 import '@sbb-esta/lyne-elements/button.js';
 import '@sbb-esta/lyne-elements/header.js';
@@ -33,4 +33,7 @@ Amplify.configure(outputs);
   imports: [RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppComponent {}
+export class AppComponent {
+  public version = packageJson.version;
+  public environmentLabel = "prod";
+}

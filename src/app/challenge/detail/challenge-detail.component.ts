@@ -2,6 +2,7 @@ import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {generateClient} from "aws-amplify/data";
 import {Schema} from "../../../../amplify/data/resource";
+import {RouterLink} from "@angular/router";
 
 export type LocalDate = string;
 const client = generateClient<Schema>();
@@ -9,7 +10,7 @@ const client = generateClient<Schema>();
 @Component({
   selector: 'app-challenge-detail',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './challenge-detail.component.html',
   styleUrl: './challenge-detail.component.scss'

@@ -1,5 +1,7 @@
 .challengeForm {
+  min-width: 18.75rem;
+  width: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }

@@ -1,4 +1,9 @@
-  <form class="challengeForm" #formDir="ngForm" [formGroup]="challengeForm" autocomplete="off">
+<div class="headerContainer">
+  <sbb-title level="4">New Challenge</sbb-title>
+  <div class="actionContainer">
+  </div>
+</div>
+<form class="challengeForm" #formDir="ngForm" [formGroup]="challengeForm" autocomplete="off">
     <sbb-form-field size="s">
       <label>Name</label>
       <input type="text" formControlName="name" />
@@ -39,7 +44,14 @@
       <label>End Date</label>
       <input  type="date" formControlName="endDate" />
     </sbb-form-field>
-    <div>
-      <sbb-button [disabled]="formDir.invalid" type="button" size="s" (click)="createChallenge()">Speichern</sbb-button>
-    </div>
+  <div class="cancelActionContainer">
+    <sbb-secondary-button
+      type="button"
+      size="s"
+      routerLink="challenges"
+    >Cancel</sbb-secondary-button
+    >
+    <sbb-button [disabled]="formDir.invalid" type="button" size="s" (click)="createChallenge()">Speichern</sbb-button>
+
+  </div>
   </form>

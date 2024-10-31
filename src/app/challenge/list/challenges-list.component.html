@@ -1,6 +1,6 @@
-<div class="bmi-title-action">
+<div class="headerContainer">
   <sbb-title level="4">Challenges</sbb-title>
-  <div class="aba-button-actions">
+  <div class="actionContainer">
       <sbb-secondary-button routerLink="/challenges/create" size="s" icon-name="circle-plus-small"
       >Neue Challenge</sbb-secondary-button
       >
@@ -11,6 +11,15 @@
     <thead>
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">End Date</th>
+      <th scope="col">Scoring A</th>
+      <th scope="col">Scoring B</th>
+      <th scope="col">Scoring C</th>
+      <th scope="col">Scoring D</th>
+      <th scope="col">Max Count</th>
+      <th scope="col">Image</th>
     </tr>
     </thead>
 
@@ -18,6 +27,15 @@
       @for (challenge of challenges()?.items; track challenge.id) {
         <tr>
           <td>{{ challenge.name }}</td>
+          <td>{{ challenge.description }}</td>
+          <td>{{ challenge.start_date | date }}</td>
+          <td>{{ challenge.end_date | date }}</td>
+          <td>{{ challenge.scoring_a }}</td>
+          <td>{{ challenge.scoring_b }}</td>
+          <td>{{ challenge.scoring_c }}</td>
+          <td>{{ challenge.scoring_d }}</td>
+          <td>{{ challenge.max_count }}</td>
+          <td>{{ challenge.image_uri }}</td>
         </tr>
       }
     </tbody>
