@@ -1,4 +1,4 @@
-import { a, type ClientSchema, defineData } from '@aws-amplify/backend';
+import { a, type ClientSchema, defineData, defineAuth } from '@aws-amplify/backend';
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -11,7 +11,10 @@ const schema = a.schema({
     .model({
       content: a.string(),
     })
-    .authorization((allow) => [allow.publicApiKey()]),
+    .authorization(allow => [
+      allow.owner('oidc').identityClaim('sbbuid'),
+      allow.group('appbakery-app-user').withClaimIn('roles'),
+    ]),
   ChallengeDto: a
     .model({
       name: a.string().required(),
@@ -92,6 +95,13 @@ export const data = defineData({
     apiKeyAuthorizationMode: {
       expiresInDays: 30,
     },
+    oidcAuthorizationMode: {
+      oidcProviderName: 'azure',
+      oidcIssuerUrl: 'https://login.microsoftonline.com/2cda5d11-f0ac-46b3-967d-af1b2e1bd01a/v2.0',
+      clientId: '3cad168f-c0d7-41b0-be1c-6f91498cfce9',
+      tokenExpiryFromAuthInSeconds: 300,
+      tokenExpireFromIssueInSeconds: 600,
+    }
   },
 });
 
