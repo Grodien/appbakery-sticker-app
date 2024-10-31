@@ -62,11 +62,11 @@ const schema = a.schema({
   ChallengeEventDto: a
     .model({
       user_id: a.id().required(),
-      user: a.hasOne('UserDto', 'user_id').required(),
+      user: a.belongsTo('UserDto', 'user_id'),
       challenge_id: a.id().required(),
-      challenge: a.hasOne('ChallengeDto', 'challenge_id').required(),
+      challenge: a.belongsTo('ChallengeDto', 'challenge_id'),
       level_id: a.id(),
-      level: a.hasOne('LevelDto', 'level_id'),
+      level: a.belongsTo('LevelDto', 'level_id'),
       description: a.string(),
       count: a.integer().required(),
     })
