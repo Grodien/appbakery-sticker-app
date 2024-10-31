@@ -12,38 +12,67 @@ const schema = a.schema({
       content: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
-  Challenge: a
+  ChallengeDto: a
     .model({
-      name: a.string(),
-      description: a.string(),
-      start_date: a.datetime(),
+      name: a.string().required(),
+      description: a.string().required(),
+      start_date: a.datetime().required(),
       end_date: a.datetime(),
-      scoring_a: a.float(),
-      scoring_b: a.float(),
-      scoring_c: a.float(),
-      scoring_d: a.float(),
+      scoring_a: a.float().required(),
+      scoring_b: a.float().required(),
+      scoring_c: a.float().required(),
+      scoring_d: a.float().required(),
       max_count: a.integer(),
-      image_uri: a.string(),
-      levels: a.hasMany('Level', 'challenge_id'),
+      image_uri: a.string().required(),
+      levels: a.hasMany('LevelDto', 'challenge_id'),
     })
     .authorization((allow) => [allow.publicApiKey()]),
-  Level: a
+  LevelDto: a
     .model({
-      challenge_id: a.id(),
-      challenge: a.belongsTo('Challenge', 'challenge_id'),
-      sticker_id: a.id(),
-      sticker: a.hasOne('Sticker', 'level_id'),
-      threshold: a.integer(),
-      bonus_score: a.integer(),
+      challenge_id: a.id().required(),
+      challenge: a.belongsTo('ChallengeDto', 'challenge_id'),
+      sticker_id: a.id().required(),
+      sticker: a.hasOne('StickerDto', 'level_id').required(),
+      threshold: a.integer().required(),
+      bonus_score: a.integer().required(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
-  Sticker: a
+  StickerDto: a
     .model({
       level_id: a.id(),
-      level: a.belongsTo('Level', 'level_id'),
-      name: a.string(),
+      level: a.belongsTo('LevelDto', 'level_id'),
+      name: a.string().required(),
+      description: a.string().required(),
+      img_uri: a.string().required(),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
+  UserDto: a
+    .model({
+      oid: a.string().required(),
+      display_name: a.string().required(),
+      total_score: a.integer().default(0),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
+  ChallengeEventDto: a
+    .model({
+      user_id: a.id().required(),
+      user: a.hasOne('UserDto', 'user_id').required(),
+      challenge_id: a.id().required(),
+      challenge: a.hasOne('ChallengeDto', 'challenge_id').required(),
+      level_id: a.id(),
+      level: a.hasOne('LevelDto', 'level_id'),
       description: a.string(),
-      img_uri: a.string(),
+      count: a.integer().required(),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
+  UserStickerDto: a
+    .model({
+      user_id: a.id().required(),
+      user: a.hasOne('UserDto', 'user_id').required(),
+      sticker_id: a.id().required(),
+      sticker: a.hasOne('StickerDto', 'sticker_id').required(),
+      challenge_id: a.id(),
+      challenge: a.hasOne('ChallengeDto', 'challenge_id'),
     })
     .authorization((allow) => [allow.publicApiKey()]),
 });
