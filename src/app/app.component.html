@@ -1,1 +1,27 @@
-<app-todos></app-todos>
+<sbb-header expanded>
+  <sbb-status type="info" icon-name="cup-hot-small" title-content="AppBakery App">
+    <span>Version: todo-todo</span>
+  </sbb-status>
+    <sbb-header-button
+      routerLink="/todos"
+      icon-name="cup-hot-small"
+      expand-from="zero"
+    >Todos</sbb-header-button
+    >
+    <div class="sbb-header-spacer"></div>
+  <sbb-header-button
+    icon-name="user-small"
+    id="user-menu-trigger"
+    class="sbb-header-shrinkable"
+    expand-from="zero"
+  >Todo Dein Name</sbb-header-button
+  >
+  <sbb-menu trigger="user-menu-trigger">
+    <sbb-menu-link icon-name="user-small">Todo Auth Insights</sbb-menu-link>
+    <sbb-divider></sbb-divider>
+    <sbb-menu-button icon-name="exit-small">Todo Logout</sbb-menu-button>
+  </sbb-menu>
+</sbb-header>
+<sbb-container expanded>
+  <router-outlet />
+</sbb-container>
