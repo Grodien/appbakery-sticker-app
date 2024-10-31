@@ -31,7 +31,7 @@ const schema = a.schema({
     .authorization((allow) => [allow.publicApiKey()]),
   LevelDto: a
     .model({
-      challenge_id: a.id().required(),
+      challenge_id: a.id(),
       challenge: a.belongsTo('ChallengeDto', 'challenge_id'),
       sticker_id: a.id(),
       sticker: a.hasOne('StickerDto', 'level_id'),
