@@ -1,0 +1,45 @@
+  <form class="challengeForm" #formDir="ngForm" [formGroup]="challengeForm" autocomplete="off">
+    <sbb-form-field size="s">
+      <label>Name</label>
+      <input type="text" formControlName="name" />
+    </sbb-form-field>
+    <sbb-form-field size="s">
+      <label>Description</label>
+      <input type="text" formControlName="description" />
+    </sbb-form-field>
+    <sbb-form-field size="s">
+      <label>Scoring A</label>
+      <input type="number" formControlName="scoringA" />
+    </sbb-form-field>
+    <sbb-form-field size="s">
+      <label>Scoring B</label>
+      <input type="number" formControlName="scoringB" />
+    </sbb-form-field>
+    <sbb-form-field size="s">
+      <label>Scoring C</label>
+      <input type="number" formControlName="scoringC" />
+    </sbb-form-field>
+    <sbb-form-field size="s">
+      <label>Scoring D</label>
+      <input type="number" formControlName="scoringD" />
+    </sbb-form-field>
+    <sbb-form-field size="s">
+      <label>Max Count</label>
+      <input type="number" formControlName="maxCount" />
+    </sbb-form-field>
+    <sbb-form-field size="s">
+      <label>Image Uri</label>
+      <input type="text" formControlName="imageUri" />
+    </sbb-form-field>
+    <sbb-form-field size="s">
+      <label>Start Date</label>
+      <input  type="date" formControlName="startDate" />
+    </sbb-form-field>
+    <sbb-form-field size="s">
+      <label>End Date</label>
+      <input  type="date" formControlName="endDate" />
+    </sbb-form-field>
+    <div>
+      <sbb-button [disabled]="formDir.invalid" type="button" size="s" (click)="createChallenge()">Speichern</sbb-button>
+    </div>
+  </form>
