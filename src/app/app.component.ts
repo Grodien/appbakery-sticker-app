@@ -29,10 +29,8 @@ Amplify.configure(outputs);
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.scss'],
   imports: [RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppComponent {
-  title = 'amplify-angular-template';
-}
+export class AppComponent {}
