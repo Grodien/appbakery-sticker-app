@@ -5,16 +5,18 @@
   <table class="sbb-table">
     <thead>
       <tr>
+        <th scope="col">Challenge Id</th>
         <th scope="col">Threshold</th>
         <th scope="col">Bonus Score</th>
       </tr>
     </thead>
 
     <tbody>
-      @for (challengeLevels of challengeLevels()?.items; track challengeLevels.id) {
+      @for (challengeLevel of challengeLevels; track challengeLevel.id) {
         <tr>
-          <td>{{ challengeLevels.threshold }}</td>
-          <td>{{ challengeLevels.bonus_score }}</td>
+          <td>{{ challengeLevel.challenge_id }}</td>
+          <td>{{ challengeLevel.threshold }}</td>
+          <td>{{ challengeLevel.bonus_score }}</td>
         </tr>
       }
     </tbody>

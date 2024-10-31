@@ -4,13 +4,15 @@ import { Schema } from '../../../../amplify/data/resource';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { ChallengeLevelDetailComponent } from '../../challenge-level/detail/challenge-level-detail.component';
+import { ChallengeLevelListComponent } from '../../challenge-level/list/challenge-level-list.component';
 
 const client = generateClient<Schema>();
 
 @Component({
   selector: 'app-challenges-list',
   standalone: true,
-  imports: [RouterModule, DatePipe],
+  imports: [RouterModule, DatePipe, ChallengeLevelListComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './challenges-list.component.html',
   styleUrl: './challenges-list.component.scss',

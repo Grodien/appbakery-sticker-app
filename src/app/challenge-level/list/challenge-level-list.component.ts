@@ -1,8 +1,9 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { generateClient } from 'aws-amplify/api';
 import { Schema } from '../../../../amplify/data/resource';
+import { firstValueFrom } from 'rxjs';
 
 const client = generateClient<Schema>();
 
@@ -15,5 +16,29 @@ const client = generateClient<Schema>();
   styleUrl: './challenge-level-list.component.scss',
 })
 export class ChallengeLevelListComponent {
-  public challengeLevels = toSignal(client.models.LevelDto.observeQuery());
+  public challengeLevels: any[] = [];
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {}
+
+  async ngOnInit(): Promise<void> {
+    const challengeId = this.route.snapshot.paramMap.get('challengeId');
+    if (challengeId != null) {
+      this.challengeLevels = (
+        await firstValueFrom(
+          client.models.LevelDto.observeQuery({
+            filter: {
+              challenge_id: {
+                eq: challengeId,
+              },
+            },
+          }),
+        )
+      ).items;
+    } else {
+      this.challengeLevels = (await firstValueFrom(client.models.LevelDto.observeQuery())).items;
+    }
+  }
 }

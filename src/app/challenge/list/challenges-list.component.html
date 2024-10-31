@@ -32,8 +32,11 @@
             ><sbb-secondary-button
               [routerLink]="'/challenges/' + challenge.id + '/challenge-levels/create'"
               size="s"
-              icon-name="circle-plus-small"
               >Add Level</sbb-secondary-button
+            ><sbb-secondary-button
+              [routerLink]="'/challenges/' + challenge.id + '/challenge-levels'"
+              size="s"
+              >Show Levels</sbb-secondary-button
             ></td
           >
           <td>{{ challenge.description }}</td>

@@ -35,7 +35,6 @@ export class ChallengeLevelDetailComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.challengeId = this.route.snapshot.paramMap.get('challengeId');
-    console.log(this.challengeId);
   }
 
   public async createChallengeLevel(): Promise<void> {
