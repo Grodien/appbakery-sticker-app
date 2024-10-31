@@ -1,0 +1,25 @@
+<div class="headerContainer">
+  <sbb-title level="4">New Sticker</sbb-title>
+</div>
+<form class="stickerForm" #formDir="ngForm" [formGroup]="stickerForm" autocomplete="off">
+  <sbb-form-field size="s">
+    <label>Name</label>
+    <input type="text" formControlName="name" />
+  </sbb-form-field>
+  <sbb-form-field size="s">
+    <label>Descritpion</label>
+    <input type="text" formControlName="description" />
+  </sbb-form-field>
+  <sbb-form-field size="s">
+    <label>Image Uri</label>
+    <input type="text" formControlName="image_uri" />
+  </sbb-form-field>
+  <div class="cancelActionContainer">
+    <sbb-secondary-button type="button" size="s" routerLink="/challenge-levels"
+      >Cancel</sbb-secondary-button
+    >
+    <sbb-button [disabled]="formDir.invalid" type="button" size="s" (click)="createChallengeLevel()"
+      >Speichern</sbb-button
+    >
+  </div>
+</form>

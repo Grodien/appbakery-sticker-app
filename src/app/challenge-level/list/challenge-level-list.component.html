@@ -6,6 +6,7 @@
     <thead>
       <tr>
         <th scope="col">Challenge Id</th>
+        <th scope="col">Sticker</th>
         <th scope="col">Threshold</th>
         <th scope="col">Bonus Score</th>
       </tr>
@@ -15,6 +16,15 @@
       @for (challengeLevel of challengeLevels; track challengeLevel.id) {
         <tr>
           <td>{{ challengeLevel.challenge_id }}</td>
+          <sbb-secondary-button
+            [routerLink]="'/challenge-levels/' + challengeLevel.id + '/stickers/create'"
+            size="s"
+            >Add Sticker</sbb-secondary-button
+          ><sbb-secondary-button
+            [routerLink]="'/challenge-levels/' + challengeLevel.id + '/stickers'"
+            size="s"
+            >Show Stickers</sbb-secondary-button
+          >
           <td>{{ challengeLevel.threshold }}</td>
           <td>{{ challengeLevel.bonus_score }}</td>
         </tr>

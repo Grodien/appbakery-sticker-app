@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { generateClient } from 'aws-amplify/api';
@@ -15,13 +15,10 @@ const client = generateClient<Schema>();
   templateUrl: './challenge-level-list.component.html',
   styleUrl: './challenge-level-list.component.scss',
 })
-export class ChallengeLevelListComponent {
+export class ChallengeLevelListComponent implements OnInit {
   public challengeLevels: any[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
   async ngOnInit(): Promise<void> {
     const challengeId = this.route.snapshot.paramMap.get('challengeId');

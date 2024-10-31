@@ -6,6 +6,8 @@ import { ChallengeLevelDetailComponent } from './challenge-level/detail/challeng
 import { autoLoginPartialRoutesGuard } from 'angular-auth-oidc-client';
 import { inject } from '@angular/core';
 import { AuthService } from './core/auth.service';
+import { StickerListComponent } from './sticker/list/sticker-list.component';
+import { StickerDetailComponent } from './sticker/sticker/sticker-detail.component';
 
 export const routes: Routes = [
   {
@@ -19,12 +21,17 @@ export const routes: Routes = [
           { path: '', component: ChallengesListComponent },
           { path: 'create', component: ChallengeDetailComponent },
           {
-            path: ':challengeId/challenge-levels',
-            component: ChallengeLevelListComponent,
-          },
-          {
-            path: ':challengeId/challenge-levels/create',
-            component: ChallengeLevelDetailComponent,
+            path: ':challengeId',
+            children: [
+              {
+                path: 'challenge-levels',
+                component: ChallengeLevelListComponent,
+              },
+              {
+                path: 'challenge-levels/create',
+                component: ChallengeLevelDetailComponent,
+              },
+            ],
           },
         ],
       },
@@ -32,8 +39,24 @@ export const routes: Routes = [
         path: 'challenge-levels',
         children: [
           { path: '', component: ChallengeLevelListComponent },
-          { path: 'create', component: ChallengeLevelDetailComponent },
+          {
+            path: ':challengeLevelId',
+            children: [
+              {
+                path: 'stickers',
+                component: StickerListComponent,
+              },
+              {
+                path: 'stickers/create',
+                component: StickerDetailComponent,
+              },
+            ],
+          },
         ],
+      },
+      {
+        path: 'stickers',
+        children: [{ path: '', component: StickerListComponent }],
       },
       {
         path: 'auth-insights',

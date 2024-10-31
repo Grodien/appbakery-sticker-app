@@ -1,0 +1,24 @@
+<div class="headerContainer">
+  <sbb-title level="4">Stickers</sbb-title>
+</div>
+<sbb-table-wrapper>
+  <table class="sbb-table">
+    <thead>
+      <tr>
+        <th scope="col">Level Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (sticker of stickers; track sticker.id) {
+        <tr>
+          <td>{{ sticker.level_id }}</td>
+          <td>{{ sticker.name }}</td>
+          <td>{{ sticker.description }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</sbb-table-wrapper>
