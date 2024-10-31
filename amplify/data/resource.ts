@@ -1,4 +1,4 @@
-import {a, type ClientSchema, defineData} from '@aws-amplify/backend';
+import { a, type ClientSchema, defineData } from '@aws-amplify/backend';
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -12,12 +12,40 @@ const schema = a.schema({
       content: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
-  Challenge: a.model({
-    name: a.string(),
-    description: a.string(),
-    start: a.datetime(),
-    end: a.datetime(),
-  }).authorization((allow) => [allow.publicApiKey()])
+  Challenge: a
+    .model({
+      name: a.string(),
+      description: a.string(),
+      start_date: a.datetime(),
+      end_date: a.datetime(),
+      scoring_a: a.float(),
+      scoring_b: a.float(),
+      scoring_c: a.float(),
+      scoring_d: a.float(),
+      max_count: a.integer(),
+      image_uri: a.string(),
+      levels: a.hasMany('Level', 'challenge_id'),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
+  Level: a
+    .model({
+      challenge_id: a.id(),
+      challenge: a.belongsTo('Challenge', 'challenge_id'),
+      sticker_id: a.id(),
+      sticker: a.hasOne('Sticker', 'sticker_id'),
+      threshold: a.integer(),
+      bonus_score: a.integer(),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
+  Sticker: a
+    .model({
+      level_id: a.id(),
+      level: a.belongsTo('Level', 'level_id'),
+      name: a.string(),
+      description: a.string(),
+      img_uri: a.string(),
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
