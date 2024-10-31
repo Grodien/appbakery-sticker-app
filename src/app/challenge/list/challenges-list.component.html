@@ -1,36 +1,41 @@
 <div class="headerContainer">
   <sbb-title level="4">Challenges</sbb-title>
   <div class="actionContainer">
-      <sbb-secondary-button routerLink="/challenges/create" size="s" icon-name="circle-plus-small"
+    <sbb-secondary-button routerLink="/challenges/create" size="s" icon-name="circle-plus-small"
       >New Challenge</sbb-secondary-button
-      >
+    >
   </div>
 </div>
 <sbb-table-wrapper>
   <table class="sbb-table">
     <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Level</th>
-      <th scope="col">Description</th>
-      <th scope="col">Start Date</th>
-      <th scope="col">End Date</th>
-      <th scope="col">Scoring A</th>
-      <th scope="col">Scoring B</th>
-      <th scope="col">Scoring C</th>
-      <th scope="col">Scoring D</th>
-      <th scope="col">Max Count</th>
-      <th scope="col">Image</th>
-    </tr>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Level</th>
+        <th scope="col">Description</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Scoring A</th>
+        <th scope="col">Scoring B</th>
+        <th scope="col">Scoring C</th>
+        <th scope="col">Scoring D</th>
+        <th scope="col">Max Count</th>
+        <th scope="col">Image</th>
+      </tr>
     </thead>
 
     <tbody>
       @for (challenge of challenges()?.items; track challenge.id) {
         <tr>
           <td>{{ challenge.name }}</td>
-          <td><sbb-secondary-button [routerLink]="'/challenges/' + challenge.id + '/challenge-levels/create'" size="s" icon-name="circle-plus-small"
-          >Add Level</sbb-secondary-button
-          ></td>
+          <td
+            ><sbb-secondary-button
+              [routerLink]="'/challenges/' + challenge.id + '/challenge-levels/create'"
+              size="s"
+              icon-name="circle-plus-small"
+              >Add Level</sbb-secondary-button
+            ></td
+          >
           <td>{{ challenge.description }}</td>
           <td>{{ challenge.start_date | date }}</td>
           <td>{{ challenge.end_date | date }}</td>

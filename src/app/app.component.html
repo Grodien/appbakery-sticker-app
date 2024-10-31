@@ -2,30 +2,24 @@
   <sbb-status type="info" icon-name="cup-hot-small" title-content="AppBakery App">
     <span>Version: {{ environmentLabel }}-{{ version }}</span>
   </sbb-status>
-  <sbb-header-button
-    routerLink="/challenges"
-    icon-name="cup-hot-small"
-    expand-from="zero"
-  >Challenges</sbb-header-button
+  <sbb-header-button routerLink="/challenges" icon-name="cup-hot-small" expand-from="zero"
+    >Challenges</sbb-header-button
   >
-  <sbb-header-button
-    routerLink="/challenge-levels"
-    icon-name="cup-hot-small"
-    expand-from="zero"
-  >Levels</sbb-header-button
+  <sbb-header-button routerLink="/challenge-levels" icon-name="cup-hot-small" expand-from="zero"
+    >Levels</sbb-header-button
   >
-    <div class="sbb-header-spacer"></div>
+  <div class="sbb-header-spacer"></div>
   <sbb-header-button
     icon-name="user-small"
     id="user-menu-trigger"
     class="sbb-header-shrinkable"
     expand-from="zero"
-  >Todo Dein Name</sbb-header-button
+    >{{ authService.idToken?.name }}</sbb-header-button
   >
   <sbb-menu trigger="user-menu-trigger">
-    <sbb-menu-link icon-name="user-small">Todo Auth Insights</sbb-menu-link>
+    <sbb-menu-link icon-name="user-small" routerLink="/auth-insights">Auth Insights</sbb-menu-link>
     <sbb-divider></sbb-divider>
-    <sbb-menu-button icon-name="exit-small">Todo Logout</sbb-menu-button>
+    <sbb-menu-button icon-name="exit-small" (click)="authService.logout()">Logout</sbb-menu-button>
   </sbb-menu>
 </sbb-header>
 <sbb-container expanded>

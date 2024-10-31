@@ -1,8 +1,8 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {generateClient} from "aws-amplify/data";
-import {Schema} from "../../../../amplify/data/resource";
-import {Router, RouterLink, RouterModule} from "@angular/router";
+import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {generateClient} from 'aws-amplify/data';
+import {Schema} from '../../../../amplify/data/resource';
+import {Router, RouterModule} from '@angular/router';
 
 export type LocalDate = string;
 const client = generateClient<Schema>();
@@ -13,10 +13,9 @@ const client = generateClient<Schema>();
   imports: [ReactiveFormsModule, RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './challenge-detail.component.html',
-  styleUrl: './challenge-detail.component.scss'
+  styleUrl: './challenge-detail.component.scss',
 })
 export class ChallengeDetailComponent {
-
   public challengeForm = new FormGroup({
     name: new FormControl<string>('test', {
       nonNullable: true,
@@ -59,27 +58,25 @@ export class ChallengeDetailComponent {
     }),
   });
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   public async createChallenge(): Promise<void> {
     if (this.challengeForm.invalid) {
       return;
     }
     const formValue = this.challengeForm.getRawValue();
-      await client.models.ChallengeDto.create({
-        name: formValue.name,
-        description: formValue.description,
-        start_date: new Date(formValue.startDate).toISOString(),
-        end_date: new Date(formValue.endDate).toISOString(),
-        scoring_a: formValue.scoringA,
-        scoring_b: formValue.scoringB,
-        scoring_c: formValue.scoringC,
-        scoring_d: formValue.scoringD,
-        max_count: formValue.maxCount,
-        image_uri: formValue.imageUri,
-      });
+    await client.models.ChallengeDto.create({
+      name: formValue.name,
+      description: formValue.description,
+      start_date: new Date(formValue.startDate).toISOString(),
+      end_date: new Date(formValue.endDate).toISOString(),
+      scoring_a: formValue.scoringA,
+      scoring_b: formValue.scoringB,
+      scoring_c: formValue.scoringC,
+      scoring_d: formValue.scoringD,
+      max_count: formValue.maxCount,
+      image_uri: formValue.imageUri,
+    });
     await this.router.navigate([`/challenge-levels`]);
   }
-
 }

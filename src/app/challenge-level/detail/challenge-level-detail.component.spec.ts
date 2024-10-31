@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ChallengeLevelDetailComponent } from './challenge-level-detail.component';
+import {ChallengeLevelDetailComponent} from './challenge-level-detail.component';
 
 describe('ChallengeLevelDetailComponent', () => {
   let component: ChallengeLevelDetailComponent;
@@ -8,10 +8,9 @@ describe('ChallengeLevelDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChallengeLevelDetailComponent]
-    })
-    .compileComponents();
-    
+      imports: [ChallengeLevelDetailComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ChallengeLevelDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
