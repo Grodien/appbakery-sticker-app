@@ -11,20 +11,13 @@
     <input type="text" formControlName="description" />
   </sbb-form-field>
   <sbb-form-field size="s">
-    <label>Scoring A</label>
-    <input type="number" formControlName="scoringA" />
-  </sbb-form-field>
-  <sbb-form-field size="s">
-    <label>Scoring B</label>
-    <input type="number" formControlName="scoringB" />
-  </sbb-form-field>
-  <sbb-form-field size="s">
-    <label>Scoring C</label>
-    <input type="number" formControlName="scoringC" />
-  </sbb-form-field>
-  <sbb-form-field size="s">
-    <label>Scoring D</label>
-    <input type="number" formControlName="scoringD" />
+    <sbb-select ngDefaultControl formControlName="challengeType" placeholder="Challenge Type">
+      @for (option of challengeTypes; track option.name) {
+        <sbb-option [value]="option.name"
+          ><span>{{ option.name }}</span></sbb-option
+        >
+      }
+    </sbb-select>
   </sbb-form-field>
   <sbb-form-field size="s">
     <label>Max Count</label>

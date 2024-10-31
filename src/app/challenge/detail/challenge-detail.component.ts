@@ -7,6 +7,14 @@ import { Router, RouterModule } from '@angular/router';
 export type LocalDate = string;
 const client = generateClient<Schema>();
 
+interface ChallengeType {
+  name: string;
+  scoringA: number;
+  scoringB: number;
+  scoringC: number;
+  scoringD: number;
+}
+
 @Component({
   selector: 'app-challenge-detail',
   standalone: true,
@@ -16,6 +24,43 @@ const client = generateClient<Schema>();
   styleUrl: './challenge-detail.component.scss',
 })
 export class ChallengeDetailComponent {
+  public challengeTypes: ChallengeType[] = [
+    {
+      name: 'Keine Punkte Challenge',
+      scoringA: 0,
+      scoringB: 2,
+      scoringC: 0,
+      scoringD: 0,
+    },
+    {
+      name: 'Konstante Punkte Challenge',
+      scoringA: 0,
+      scoringB: 2,
+      scoringC: 0,
+      scoringD: 3,
+    },
+    {
+      name: 'Normale Punkte Challenge',
+      scoringA: 2,
+      scoringB: 1.5,
+      scoringC: 5,
+      scoringD: -5,
+    },
+    {
+      name: 'Double XP Challenge',
+      scoringA: 2,
+      scoringB: 1.5,
+      scoringC: 5,
+      scoringD: 0,
+    },
+    {
+      name: 'Hard Challenge',
+      scoringA: 2,
+      scoringB: 1.3,
+      scoringC: 5,
+      scoringD: -5,
+    },
+  ];
   public challengeForm = new FormGroup({
     name: new FormControl<string>('test', {
       nonNullable: true,
@@ -25,20 +70,7 @@ export class ChallengeDetailComponent {
       nonNullable: true,
       validators: Validators.required,
     }),
-    scoringA: new FormControl<number>(1, {
-      nonNullable: true,
-      validators: Validators.required,
-    }),
-    scoringB: new FormControl<number>(1, {
-      nonNullable: true,
-      validators: Validators.required,
-    }),
-    scoringC: new FormControl<number>(1, {
-      nonNullable: true,
-      validators: Validators.required,
-    }),
-    scoringD: new FormControl<number>(1, {
-      nonNullable: true,
+    challengeType: new FormControl<string>(this.challengeTypes[4].name, {
       validators: Validators.required,
     }),
     maxCount: new FormControl<number>(5, {
@@ -65,18 +97,25 @@ export class ChallengeDetailComponent {
       return;
     }
     const formValue = this.challengeForm.getRawValue();
+    if (formValue.challengeType == null) {
+      return;
+    }
+    const challengeType = this.challengeTypes.find((c) => c.name === formValue.challengeType);
+    if (challengeType == null) {
+      return;
+    }
     await client.models.ChallengeDto.create({
       name: formValue.name,
       description: formValue.description,
       start_date: new Date(formValue.startDate).toISOString(),
       end_date: new Date(formValue.endDate).toISOString(),
-      scoring_a: formValue.scoringA,
-      scoring_b: formValue.scoringB,
-      scoring_c: formValue.scoringC,
-      scoring_d: formValue.scoringD,
+      scoring_a: challengeType.scoringA,
+      scoring_b: challengeType.scoringB,
+      scoring_c: challengeType.scoringC,
+      scoring_d: challengeType.scoringD,
       max_count: formValue.maxCount,
       image_uri: formValue.imageUri,
     });
-    await this.router.navigate([`/challenge-levels`]);
+    await this.router.navigate([`/challenges`]);
   }
 }
