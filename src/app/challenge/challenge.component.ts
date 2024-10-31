@@ -26,15 +26,19 @@ export class ChallengeComponent {
       validators: Validators.required,
     }),
     scoringA: new FormControl<number>(1, {
+      nonNullable: true,
       validators: Validators.required,
     }),
     scoringB: new FormControl<number>(1, {
+      nonNullable: true,
       validators: Validators.required,
     }),
     scoringC: new FormControl<number>(1, {
+      nonNullable: true,
       validators: Validators.required,
     }),
     scoringD: new FormControl<number>(1, {
+      nonNullable: true,
       validators: Validators.required,
     }),
     maxCount: new FormControl<number>(5, {
@@ -59,10 +63,7 @@ export class ChallengeComponent {
       return;
     }
     const formValue = this.challengeForm.getRawValue();
-    if (formValue.startDate == null || formValue.endDate == null) {
-      return;
-    }
-      await client.models.Challenge.create({
+      await client.models.ChallengeDto.create({
         name: formValue.name,
         description: formValue.description,
         start_date: new Date(formValue.startDate).toISOString(),
