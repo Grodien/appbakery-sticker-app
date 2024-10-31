@@ -25,16 +25,19 @@ const schema = a.schema({
       max_count: a.integer(),
       image_uri: a.string().required(),
       levels: a.hasMany('LevelDto', 'challenge_id'),
+      events: a.hasMany('ChallengeEventDto', 'challenge_id'),
+      userStickers: a.hasMany('UserStickerDto', 'challenge_id'),
     })
     .authorization((allow) => [allow.publicApiKey()]),
   LevelDto: a
     .model({
       challenge_id: a.id().required(),
       challenge: a.belongsTo('ChallengeDto', 'challenge_id'),
-      sticker_id: a.id().required(),
-      sticker: a.hasOne('StickerDto', 'level_id').required(),
+      sticker_id: a.id(),
+      sticker: a.hasOne('StickerDto', 'level_id'),
       threshold: a.integer().required(),
       bonus_score: a.integer().required(),
+      events: a.hasMany('ChallengeEventDto', 'level_id'),
     })
     .authorization((allow) => [allow.publicApiKey()]),
   StickerDto: a
@@ -44,6 +47,7 @@ const schema = a.schema({
       name: a.string().required(),
       description: a.string().required(),
       img_uri: a.string().required(),
+      users: a.hasMany('UserStickerDto', 'sticker_id'),
     })
     .authorization((allow) => [allow.publicApiKey()]),
   UserDto: a
@@ -51,16 +55,18 @@ const schema = a.schema({
       oid: a.string().required(),
       display_name: a.string().required(),
       total_score: a.integer().default(0),
+      stickers: a.hasMany('UserStickerDto', 'user_id'),
+      events: a.hasMany('ChallengeEventDto', 'user_id'),
     })
     .authorization((allow) => [allow.publicApiKey()]),
   ChallengeEventDto: a
     .model({
       user_id: a.id().required(),
-      user: a.hasOne('UserDto', 'user_id').required(),
+      user: a.belongsTo('UserDto', 'user_id'),
       challenge_id: a.id().required(),
-      challenge: a.hasOne('ChallengeDto', 'challenge_id').required(),
+      challenge: a.belongsTo('ChallengeDto', 'challenge_id'),
       level_id: a.id(),
-      level: a.hasOne('LevelDto', 'level_id'),
+      level: a.belongsTo('LevelDto', 'level_id'),
       description: a.string(),
       count: a.integer().required(),
     })
@@ -68,11 +74,11 @@ const schema = a.schema({
   UserStickerDto: a
     .model({
       user_id: a.id().required(),
-      user: a.hasOne('UserDto', 'user_id').required(),
+      user: a.belongsTo('UserDto', 'user_id'),
       sticker_id: a.id().required(),
-      sticker: a.hasOne('StickerDto', 'sticker_id').required(),
+      sticker: a.belongsTo('StickerDto', 'sticker_id'),
       challenge_id: a.id(),
-      challenge: a.hasOne('ChallengeDto', 'challenge_id'),
+      challenge: a.belongsTo('ChallengeDto', 'challenge_id'),
     })
     .authorization((allow) => [allow.publicApiKey()]),
 });
