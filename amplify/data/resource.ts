@@ -32,7 +32,7 @@ const schema = a.schema({
       challenge_id: a.id(),
       challenge: a.belongsTo('Challenge', 'challenge_id'),
       sticker_id: a.id(),
-      sticker: a.hasOne('Sticker', 'sticker_id'),
+      sticker: a.hasOne('Sticker', 'level_id'),
       threshold: a.integer(),
       bonus_score: a.integer(),
     })
