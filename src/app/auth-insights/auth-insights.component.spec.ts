@@ -1,8 +1,8 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {AuthInsightsComponent} from './auth-insights.component';
-import {OidcSecurityService} from 'angular-auth-oidc-client';
-import {of} from 'rxjs';
+import { AuthInsightsComponent } from './auth-insights.component';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { of } from 'rxjs';
 
 const authServiceMock: Partial<OidcSecurityService> = {
   getUserData: () => of({ name: 'Test', email: 'test@sbb.chh', roles: [] }),

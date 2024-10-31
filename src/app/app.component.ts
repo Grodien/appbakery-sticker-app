@@ -1,6 +1,6 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {Amplify} from 'aws-amplify';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { Amplify } from 'aws-amplify';
 import outputs from '../../amplify_outputs.json';
 import packageJson from '../../package.json';
 
@@ -22,7 +22,7 @@ import '@sbb-esta/lyne-elements/accordion.js';
 import '@sbb-esta/lyne-elements/select.js';
 import '@sbb-esta/lyne-elements/option.js';
 import '@sbb-esta/lyne-elements/dialog.js';
-import {AuthService} from './core/auth.service';
+import { AuthService } from './core/auth.service';
 
 Amplify.configure(outputs);
 

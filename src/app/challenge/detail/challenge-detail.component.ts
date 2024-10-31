@@ -1,8 +1,8 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {generateClient} from 'aws-amplify/data';
-import {Schema} from '../../../../amplify/data/resource';
-import {Router, RouterModule} from '@angular/router';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { generateClient } from 'aws-amplify/data';
+import { Schema } from '../../../../amplify/data/resource';
+import { Router, RouterModule } from '@angular/router';
 
 export type LocalDate = string;
 const client = generateClient<Schema>();

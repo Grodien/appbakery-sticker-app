@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {ChallengeLevelListComponent} from './challenge-level-list.component';
+import { ChallengeLevelListComponent } from './challenge-level-list.component';
 
 describe('ChallengeLevelListComponent', () => {
   let component: ChallengeLevelListComponent;

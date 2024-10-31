@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {ChallengeLevelDetailComponent} from './challenge-level-detail.component';
+import { ChallengeLevelDetailComponent } from './challenge-level-detail.component';
 
 describe('ChallengeLevelDetailComponent', () => {
   let component: ChallengeLevelDetailComponent;

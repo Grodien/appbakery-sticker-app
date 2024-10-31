@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {firstValueFrom, ReplaySubject} from 'rxjs';
-import {OidcSecurityService} from 'angular-auth-oidc-client';
-import {LoginResponse} from 'angular-auth-oidc-client/lib/login/login-response';
+import { Injectable } from '@angular/core';
+import { firstValueFrom, ReplaySubject } from 'rxjs';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { LoginResponse } from 'angular-auth-oidc-client/lib/login/login-response';
 
 interface IdToken {
   name: string;

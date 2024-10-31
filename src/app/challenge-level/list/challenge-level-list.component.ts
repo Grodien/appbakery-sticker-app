@@ -1,8 +1,8 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {generateClient} from 'aws-amplify/api';
-import {Schema} from '../../../../amplify/data/resource';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { generateClient } from 'aws-amplify/api';
+import { Schema } from '../../../../amplify/data/resource';
 
 const client = generateClient<Schema>();
 
