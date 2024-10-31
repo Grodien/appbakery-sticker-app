@@ -2,7 +2,7 @@ import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {generateClient} from "aws-amplify/data";
 import {Schema} from "../../../../amplify/data/resource";
-import {RouterLink, RouterModule} from "@angular/router";
+import {Router, RouterLink, RouterModule} from "@angular/router";
 
 export type LocalDate = string;
 const client = generateClient<Schema>();
@@ -59,6 +59,9 @@ export class ChallengeDetailComponent {
     }),
   });
 
+  constructor(private router: Router) {
+  }
+
   public async createChallenge(): Promise<void> {
     if (this.challengeForm.invalid) {
       return;
@@ -76,6 +79,7 @@ export class ChallengeDetailComponent {
         max_count: formValue.maxCount,
         image_uri: formValue.imageUri,
       });
+    await this.router.navigate([`/challenge-levels`]);
   }
 
 }

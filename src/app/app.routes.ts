@@ -16,6 +16,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: ChallengesListComponent },
       { path: 'create', component: ChallengeDetailComponent },
+      { path: ':challengeId/challenge-levels/create', component: ChallengeLevelDetailComponent },
     ],
   },
   {

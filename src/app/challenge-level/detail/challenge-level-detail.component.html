@@ -1,1 +1,22 @@
-<p>challenge-level-detail works!</p>
+<div class="headerContainer">
+  <sbb-title level="4">New Challenge Level</sbb-title>
+</div>
+<form class="challengeLevelForm" #formDir="ngForm" [formGroup]="challengeLevelForm" autocomplete="off">
+  <sbb-form-field size="s">
+    <label>Threshold</label>
+    <input type="number" formControlName="threshold" />
+  </sbb-form-field>
+  <sbb-form-field size="s">
+    <label>Bonus Score</label>
+    <input type="number" formControlName="bonusScore" />
+  </sbb-form-field>
+  <div class="cancelActionContainer">
+    <sbb-secondary-button
+      type="button"
+      size="s"
+      routerLink="/challenge-levels"
+    >Cancel</sbb-secondary-button
+    >
+    <sbb-button [disabled]="formDir.invalid" type="button" size="s" (click)="createChallengeLevel()">Speichern</sbb-button>
+  </div>
+</form>

@@ -1,23 +1,20 @@
 <div class="headerContainer">
   <sbb-title level="4">Challenge Levels</sbb-title>
-  <div class="actionContainer">
-    <sbb-secondary-button routerLink="/challenge-levels/create" size="s" icon-name="circle-plus-small"
-    >New Challenge Level</sbb-secondary-button
-    >
-  </div>
 </div>
 <sbb-table-wrapper>
   <table class="sbb-table">
     <thead>
     <tr>
-      <th scope="col">Name</th>
+      <th scope="col">Threshold</th>
+      <th scope="col">Bonus Score</th>
     </tr>
     </thead>
 
     <tbody>
       @for (challengeLevels of challengeLevels()?.items; track challengeLevels.id) {
         <tr>
-          <td>{{ challengeLevels.id }}</td>
+          <td>{{ challengeLevels.threshold }}</td>
+          <td>{{ challengeLevels.bonus_score }}</td>
         </tr>
       }
     </tbody>

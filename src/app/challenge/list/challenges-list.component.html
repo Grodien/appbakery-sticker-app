@@ -11,6 +11,7 @@
     <thead>
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Level</th>
       <th scope="col">Description</th>
       <th scope="col">Start Date</th>
       <th scope="col">End Date</th>
@@ -27,6 +28,9 @@
       @for (challenge of challenges()?.items; track challenge.id) {
         <tr>
           <td>{{ challenge.name }}</td>
+          <td><sbb-secondary-button [routerLink]="'/challenges/' + challenge.id + '/challenge-levels/create'" size="s" icon-name="circle-plus-small"
+          >Add Level</sbb-secondary-button
+          ></td>
           <td>{{ challenge.description }}</td>
           <td>{{ challenge.start_date | date }}</td>
           <td>{{ challenge.end_date | date }}</td>
