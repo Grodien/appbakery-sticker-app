@@ -15,16 +15,8 @@ const client = generateClient<Schema>();
   templateUrl: './challenges-list.component.html',
   styleUrl: './challenges-list.component.scss'
 })
-export class ChallengesListComponent implements OnInit{
+export class ChallengesListComponent {
 
   public challenges = toSignal(client.models.ChallengeDto.observeQuery())
-
-  constructor(
-  ) {
-    console.log(client.models)
-  }
-
-  ngOnInit(): void {
-    }
 
 }
