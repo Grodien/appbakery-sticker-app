@@ -12,7 +12,6 @@ const schema = a.schema({
       content: a.string(),
     })
     .authorization((allow) => [
-      allow.owner('oidc').identityClaim('sbbuid'),
       allow.authenticated('oidc'),
     ]),
   ChallengeDto: a
