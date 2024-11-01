@@ -13,7 +13,7 @@ const schema = a.schema({
     })
     .authorization((allow) => [
       allow.owner('oidc').identityClaim('sbbuid'),
-      allow.group('appbakery-app-user').withClaimIn('roles'),
+      allow.authenticated('oidc'),
     ]),
   ChallengeDto: a
     .model({
