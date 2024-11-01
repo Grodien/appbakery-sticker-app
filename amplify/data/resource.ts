@@ -11,7 +11,7 @@ const schema = a.schema({
     .model({
       content: a.string(),
     })
-    .authorization(allow => [
+    .authorization((allow) => [
       allow.owner('oidc').identityClaim('sbbuid'),
       allow.group('appbakery-app-user').withClaimIn('roles'),
     ]),
@@ -101,7 +101,7 @@ export const data = defineData({
       clientId: '3cad168f-c0d7-41b0-be1c-6f91498cfce9',
       tokenExpiryFromAuthInSeconds: 300,
       tokenExpireFromIssueInSeconds: 600,
-    }
+    },
   },
 });
 

@@ -81,7 +81,7 @@ export class ChallengeDetailComponent {
       {
         nonNullable: true,
         validators: Validators.required,
-      }
+      },
     ),
     startDate: new FormControl<LocalDate | Date>(new Date().toISOString().substring(0, 10), {
       nonNullable: true,

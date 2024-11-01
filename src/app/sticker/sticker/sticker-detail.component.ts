@@ -29,13 +29,16 @@ export class StickerDetailComponent implements OnInit {
       {
         nonNullable: true,
         validators: Validators.required,
-      }
+      },
     ),
   });
 
   private challengeLevelId?: string | null;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {}
 
   async ngOnInit(): Promise<void> {
     this.challengeLevelId = this.route.snapshot.paramMap.get('challengeLevelId');
