@@ -20,7 +20,7 @@
         <th scope="col">Scoring C</th>
         <th scope="col">Scoring D</th>
         <th scope="col">Max Count</th>
-        <th scope="col">Image Uri</th>
+        <th scope="col">Image</th>
       </tr>
     </thead>
 
@@ -53,7 +53,7 @@
           <td>{{ challenge.scoring_c }}</td>
           <td>{{ challenge.scoring_d }}</td>
           <td>{{ challenge.max_count }}</td>
-          <td>{{ challenge.image_uri }}</td>
+          <td><img class="challengeImage" [alt]="challenge.name" [src]="challenge.image_uri" /></td>
         </tr>
       }
     </tbody>

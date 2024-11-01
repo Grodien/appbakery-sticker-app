@@ -24,10 +24,13 @@ export class StickerDetailComponent implements OnInit {
       nonNullable: true,
       validators: Validators.required,
     }),
-    imageUri: new FormControl<string>('todo', {
-      nonNullable: true,
-      validators: Validators.required,
-    }),
+    imageUri: new FormControl<string>(
+      'https://appbakery-sticker-app-images.s3.eu-central-1.amazonaws.com/placeholder.jpg',
+      {
+        nonNullable: true,
+        validators: Validators.required,
+      },
+    ),
   });
 
   private challengeLevelId?: string | null;
