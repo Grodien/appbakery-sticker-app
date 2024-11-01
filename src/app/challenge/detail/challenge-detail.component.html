@@ -4,43 +4,55 @@
 <form class="challengeForm" #formDir="ngForm" [formGroup]="challengeForm" autocomplete="off">
   <sbb-form-field size="s">
     <label>Name</label>
-    <input type="text" formControlName="name" />
+    <input type="text" formControlName="name"/>
   </sbb-form-field>
   <sbb-form-field size="s">
     <label>Description</label>
-    <input type="text" formControlName="description" />
+    <input type="text" formControlName="description"/>
   </sbb-form-field>
-  <sbb-form-field size="s">
-    <sbb-select ngDefaultControl formControlName="challengeType" placeholder="Challenge Type">
-      @for (option of challengeTypes; track option.name) {
-        <sbb-option [value]="option.name"
+  @if(!hasChallenge()) {
+    <sbb-form-field size="s">
+      <sbb-select ngDefaultControl formControlName="challengeType" placeholder="Challenge Type">
+        @for (option of challengeTypes; track option.name) {
+          <sbb-option [value]="option.name"
           ><span>{{ option.name }}</span></sbb-option
-        >
-      }
-    </sbb-select>
-  </sbb-form-field>
+          >
+        }
+      </sbb-select>
+    </sbb-form-field>
+  }
   <sbb-form-field size="s">
     <label>Max Count</label>
-    <input type="number" formControlName="maxCount" />
+    <input type="number" formControlName="maxCount"/>
   </sbb-form-field>
   <sbb-form-field size="s">
     <label>Image Uri</label>
-    <input type="text" formControlName="imageUri" />
+    <input type="text" formControlName="imageUri"/>
   </sbb-form-field>
   <sbb-form-field size="s">
     <label>Start Date</label>
-    <input type="date" formControlName="startDate" />
+    <input type="date" formControlName="startDate"/>
   </sbb-form-field>
   <sbb-form-field size="s">
     <label>End Date</label>
-    <input type="date" formControlName="endDate" />
+    <input type="date" formControlName="endDate"/>
   </sbb-form-field>
   <div class="cancelActionContainer">
     <sbb-secondary-button type="button" size="s" routerLink="/challenges"
-      >Cancel</sbb-secondary-button
+    >Cancel
+    </sbb-secondary-button
     >
-    <sbb-button [disabled]="formDir.invalid" type="button" size="s" (click)="createChallenge()"
-      >Speichern</sbb-button
-    >
+    @if (!hasChallenge()) {
+      <sbb-button [disabled]="formDir.invalid" type="button" size="s" (click)="createChallenge()"
+      >Speichern
+      </sbb-button
+      >
+    } @else {
+      <sbb-button [disabled]="formDir.invalid" type="button" size="s" (click)="updateChallenge()"
+      >Aktualiesiere
+      </sbb-button
+      >
+    }
+
   </div>
 </form>

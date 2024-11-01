@@ -20,6 +20,7 @@ export const routes: Routes = [
         children: [
           { path: '', component: ChallengesListComponent },
           { path: 'create', component: ChallengeDetailComponent },
+          { path: 'edit/:challengeId', component: ChallengeDetailComponent },
           {
             path: ':challengeId',
             children: [

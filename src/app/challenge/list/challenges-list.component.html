@@ -11,7 +11,7 @@
     <thead>
       <tr>
         <th scope="col">Name</th>
-        <th scope="col">Level</th>
+        <th scope="col">Actions</th>
         <th scope="col">Description</th>
         <th scope="col">Start Date</th>
         <th scope="col">End Date</th>
@@ -29,7 +29,13 @@
         <tr>
           <td>{{ challenge.name }}</td>
           <td
-            ><sbb-secondary-button
+            >
+            <sbb-secondary-button
+              [routerLink]="'/challenges/edit/' + challenge.id"
+              size="s"
+            >Edit</sbb-secondary-button
+            >
+            <sbb-secondary-button
               [routerLink]="'/challenges/' + challenge.id + '/challenge-levels/create'"
               size="s"
               >Add Level</sbb-secondary-button
