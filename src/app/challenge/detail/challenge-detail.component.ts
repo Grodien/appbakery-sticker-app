@@ -76,10 +76,13 @@ export class ChallengeDetailComponent {
     maxCount: new FormControl<number>(5, {
       validators: Validators.required,
     }),
-    imageUri: new FormControl<string>('todo', {
-      nonNullable: true,
-      validators: Validators.required,
-    }),
+    imageUri: new FormControl<string>(
+      'https://appbakery-sticker-app-images.s3.eu-central-1.amazonaws.com/placeholder.jpg',
+      {
+        nonNullable: true,
+        validators: Validators.required,
+      }
+    ),
     startDate: new FormControl<LocalDate | Date>(new Date().toISOString().substring(0, 10), {
       nonNullable: true,
       validators: Validators.required,
